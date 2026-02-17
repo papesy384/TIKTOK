@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent overscroll / rubber-banding from breaking snap */
+html {
+  overscroll-behavior-y: none;
+}
+
+body {
+  @apply bg-black text-white antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optional: smooth scroll for snap container (browser-dependent) */
+.snap-feed {
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
