@@ -84,7 +84,8 @@ export function Overlay({
   return (
     <div
       className={`pointer-events-none absolute inset-0 flex flex-col justify-between ${className}`}
-      aria-hidden
+      role="region"
+      aria-label="Video controls and caption"
     >
       {/* Top-left: mute — z-20 so it sits above the full-screen double-tap layer and receives clicks */}
       <div className="pointer-events-auto relative z-20 flex items-start justify-between gap-2 p-3">
