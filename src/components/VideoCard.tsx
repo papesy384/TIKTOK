@@ -95,8 +95,8 @@ export function VideoCard({
         h.destroy();
         hlsRef.current = null;
       }
-      if (videoRef.current && useHls) {
-        videoRef.current.removeAttribute("src");
+      if (video && useHls) {
+        video.removeAttribute("src");
       }
     };
   }, [src, useHls]);
