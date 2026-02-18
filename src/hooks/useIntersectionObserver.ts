@@ -35,6 +35,11 @@ export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T>(null);
   const [isFullyVisible, setIsFullyVisible] = useState(false);
 
+  // When root is null we don't observe; keep visibility false so video doesn't play against viewport
+  useEffect(() => {
+    if (root === null) setIsFullyVisible(false);
+  }, [root]);
+
   const handleIntersect = useCallback<IntersectionObserverCallback>(
     (entries) => {
       const [entry] = entries;
@@ -47,11 +52,14 @@ export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+    // When root is null (e.g. scroll container not yet set), don't observe — otherwise
+    // the browser uses the viewport and play/pause is wrong for a scrollable feed.
+    if (root === null) return;
 
     const observer = new IntersectionObserver(handleIntersect, {
       threshold,
       rootMargin,
-      root,
+      root: root ?? undefined,
     });
 
     observer.observe(node);

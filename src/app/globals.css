@@ -8,8 +8,13 @@ html {
 }
 
 body {
-  @apply bg-black text-white antialiased;
+  @apply bg-feed-bg text-feed-text antialiased;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Safe area for notched devices */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0));
 }
 
 /* Optional: smooth scroll for snap container (browser-dependent) */
