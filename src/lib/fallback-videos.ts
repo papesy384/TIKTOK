@@ -1,11 +1,14 @@
 import type { VideoItem } from "@/types/feed";
 
-/** Default clips when env is unset (paths under public/videos/). */
+/**
+ * Public demo video URLs that work on Vercel (no local files needed).
+ * When deploying, local /videos/*.mp4 are not in the repo (.gitignore), so we use these by default.
+ */
 const DEFAULT_FALLBACK: VideoItem[] = [
-  { id: "1", src: "/videos/messi.mp4", username: "@leomessi", description: "Leo Messi - football." },
-  { id: "2", src: "/videos/placeholder-1.mp4", username: "@sintel_movie", description: "Movie - Sintel." },
-  { id: "3", src: "/videos/bunny.mp4", username: "@bigbuckbunny", description: "Animation - Big Buck Bunny." },
-  { id: "4", src: "/videos/jellyfish.mp4", username: "@nature_chill", description: "Nature - jellyfish." },
+  { id: "1", src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", username: "@elephantsdream", description: "Elephant's Dream - short film." },
+  { id: "2", src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", username: "@sintel_movie", description: "Sintel - short movie." },
+  { id: "3", src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", username: "@bigbuckbunny", description: "Big Buck Bunny - animation." },
+  { id: "4", src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", username: "@sample", description: "For Bigger Blazes - sample clip." },
 ];
 
 /**
