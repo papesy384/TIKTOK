@@ -35,18 +35,8 @@ export async function fetchVideos(cursor?: string | null): Promise<FeedResponse>
     if (isNaN(page) || page < 1) return { videos: [], nextCursor: null };
     const start = PAGE_SIZE * page;
     const end = start + PAGE_SIZE;
-    let videos = all.slice(start, end);
-    let nextCursor: string | null = end < all.length ? String(page + 1) : null;
-    // Demo: page 1 returns 2 items and cursor "2"; page 2 returns first 2 again (new ids) and no more
-    if (videos.length === 0 && all.length > 0) {
-      videos = all.slice(0, PAGE_SIZE).map((v, i) => ({
-        ...v,
-        id: `${v.id}-page${page}-${i}`,
-      }));
-      nextCursor = null;
-    } else if (page === 1 && end >= all.length && all.length > PAGE_SIZE) {
-      nextCursor = "2";
-    }
+    const videos = all.slice(start, end);
+    const nextCursor: string | null = end < all.length ? String(page + 1) : null;
     return { videos, nextCursor };
   }
 
